@@ -1,0 +1,42 @@
+name: Build and Release Android Studio Debian Package
+
+on:
+  push:
+    branches:
+      - master
+    schedule:
+      - cron: '0 0 */7 * *'
+
+jobs:
+  build-deb:
+    runs-on: ubuntu-latest
+    container:
+      image: debian:trixie-slim
+
+    steps:
+      - name: Install dependencies
+        run: |
+          apt-get update
+          apt-get install -y git build-essential devscripts fakeroot dh-make python3 sudo wget python3-bs4
+
+      - name: Checkout code
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+
+      - name: Configure Android Studio source
+        run: |
+          chmod +x ./android-studio-configure.py
+          ./android-studio-configure.py trixie --stable --metapackage
+
+      - name: Build Debian package
+        run: |
+          cd android-studio
+          debuild -us -uc -b
+
+      - name: Upload .deb as artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: android-studio-debs
+          path: ${{ github.workspace }}/*.deb
+
