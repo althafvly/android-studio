@@ -1,0 +1,50 @@
+name: Build and Release Android Studio Debian Package
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  build-deb:
+    runs-on: ubuntu-latest
+    container:
+      image: debian:trixie-slim
+
+    steps:
+      - name: Install dependencies
+        run: |
+          apt-get update
+          apt-get install -y git build-essential devscripts fakeroot dh-make python3 sudo wget python3-bs4
+
+      - name: Checkout code
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+
+      - name: Configure Android Studio source
+        run: |
+          chmod +x ./android-studio-configure.py
+          ./android-studio-configure.py trixie --stable --metapackage
+
+      - name: Build Debian package
+        run: |
+          cd android-studio
+          debuild -us -uc -b
+
+      - name: Create tag 'latest'
+        run: |
+          git config user.name "github-actions"
+          git config user.email "github-actions@github.com"
+          git tag -f latest
+          git push origin latest --force
+
+      - name: Create GitHub release 'release' and upload .deb
+        uses: softprops/action-gh-release@v1
+        with:
+          tag_name: latest
+          name: release
+          files: '../*.deb'
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
