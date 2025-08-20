@@ -1,7 +1,7 @@
-Android Studio for Ubuntu
+Android Studio for Ubuntu/Debian
 =====================
 
-Android Studio by Google packaged for Ubuntu
+Android Studio by Google packaged for Ubuntu/Debian
 
 Visit the official website [here](http://mfonville.github.io/android-studio)
 
@@ -9,25 +9,25 @@ Based upon the work of @PaoloRotolo
 
 ## How-to
 
-#### Install android-studio
+#### Install android-studio (Ubuntu)
 Download pre-built packages from our [PPA](https://launchpad.net/~maarten-fonville/+archive/ubuntu/android-studio)
 
-#### Build android-studio
+#### Build android-studio (Ubuntu/Debian)
 Run configure with the parameters for the package you want to build:
 ```
-./android-studio-configure (jammy|noble|plucky|questing) [--stable] [--metapackage] [--major 3.6]
+./android-studio-configure (jammy|noble|plucky|questing|trixie) [--stable] [--metapackage] [--major 3.6]
 ```
 E.g. to build the latest (unstable) version of Android Studio for Ubuntu noble:
 ```
-./android-studio-configure noble
+./android-studio-configure trixie
 ```
 To build the latest stable version of Android Studio for Ubuntu noble including a metapackage that depends on this stable release:
 ```
-./android-studio-configure noble --stable --metapackage
+./android-studio-configure trixie --stable --metapackage
 ```
 To build the latest release of Android 3.6 for Ubuntu noble:
 ```
-./android-studio-configure noble --major 3.6
+./android-studio-configure trixie --major 3.6
 ```
 To clean the environment after configuration:
 ```
