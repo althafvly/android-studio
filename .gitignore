@@ -2,9 +2,13 @@
 android-studio/debian/changelog
 android-studio/debian/control
 android-studio/debian/*.links
+android-studio/debian/*.substvars
+android-studio/debian/.debhelper
 android-studio/debian/postinst
+android-studio/debian/android-studio*
 android-studio/debian/postrm
 android-studio/debian/preinst
+android-studio/debian/debhelper-build-stamp
 android-studio/androidstudio.svg
 android-studio/android-studio.desktop
 
@@ -14,4 +18,6 @@ android-studio*.tar*
 android-studio*.build
 android-studio*.changes
 android-studio*.upload
+android-studio*.buildinfo
+android-studio*.deb
 android-studio/debian/files
