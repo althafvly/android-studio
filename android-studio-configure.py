@@ -60,51 +60,80 @@ class ReleasesManager(object):
             iframe = page.find('devsite-iframe').iframe['src']
 
             if not iframe.startswith('http'):
-                    iframe = base_url + iframe
+                iframe = base_url + iframe
 
             response = session.get(iframe)
             page = bs4.BeautifulSoup(response.content, 'lxml')  # or html5lib
+
             downloads = page.find_all('section', attrs={'class': 'expandable'})
+
             for download in downloads:
-                stable = False
-                if 'stable' in download['class']:
+                stable = 'stable' in download.get('class', [])
+
+                version_tag = download.find('p', attrs={'class': 'expand-control'})
+                if not version_tag:
+                    continue
+
+                version_name = version_tag.get_text(strip=True)
+
+                if ' Patch ' in version_name:
                     stable = True
-                version_name = download.find('p', attrs={'class': 'expand-control'}).contents[0].split('\n')[0]
-                if ' Patch ' in version_name:  # work around because newer "Patch" builds are not explicity marked as stable
-                    stable = True
-                match_old = re.search('Android Studio ([0-9]\\.[0-9]).*', version_name)
-                match_interim = re.search('Android Studio ([0-9]{4}\\.[0-9]\\.[0-9]).*', version_name)
-                match_new = re.search('Android Studio .* ([0-9]{4}\\.[0-9]\\.[0-9]).*', version_name)
-                if match_old:
-                    major_version = match_old.group(1)
-                elif match_interim:
-                    major_version = match_interim.group(1)
-                elif match_new:
-                    major_version = match_new.group(1)
+
+                version_match = re.search(r'([0-9]{4}\.[0-9]\.[0-9])', version_name)
+                if not version_match:
+                    continue
+
+                full_version = version_match.group(1)
+                major_version = ".".join(full_version.split(".")[:2])  # e.g. 2025.3
+
+                download_links = download.find_all('a', href=re.compile(r'.*-linux\.tar\.gz'))
+                if not download_links:
+                    continue
+
+                download_url = download_links[0]['href']
+
+                match_url = re.search(r'/([0-9]{4}\.[0-9]\.[0-9]\.[0-9]+)/', download_url)
+                if not match_url:
+                    print(f"[WARNING] URL version parse failed: {download_url}")
+                    continue
+
+                version_number = match_url.group(1)
+
+                sha256sum = None
+                # find the SHA-256 for the linux download
+                filename = download_url.split('/')[-1]
+                sha_text = download.get_text(" ", strip=True)
+
+                # Specifically look for a SHA-256 associated with the filename
+                # (Pattern: SHA filename or filename SHA)
+                sha_match = re.search(r'([a-f0-9]{64})\s+' + re.escape(filename), sha_text)
+                if not sha_match:
+                    sha_match = re.search(re.escape(filename) + r'\s+([a-f0-9]{64})', sha_text)
+
+                if sha_match:
+                    sha256sum = sha_match.group(1)
                 else:
-                    continue  # skip this entry
-                download_url_parse = download.find_all('a', attrs={'href': re.compile(r'.*-linux.tar.gz')})
-                if download_url_parse:
-                    download_url = download_url_parse[0]['href']
-                else:
-                    continue  # skip this entry
-                match_old = re.search('.*/android-studio-ide-([0-9]*\\.[0-9]*)-linux.tar.gz', download_url)
-                match_new = re.search('.*/android-studio-([0-9.]+)-linux.tar.gz', download_url)
-                if match_old:
-                    version_number = match_old.group(1)
-                elif match_new:
-                    version_number = match_new.group(1)
-                else:
-                    continue  # skip this entry
-                match = re.search('.*([0-9a-f]{64}) (android-studio-(ide-)?[0-9.]+-linux\\.tar\\.gz)\\\\n.*', str(download.div.contents))
-                if match:
-                    sha256sum = match.group(1)
-                    filename = match.group(2)
-                else:
-                    continue  # skip this entry
-                self.add_release(AndroidStudioRelease(stable, major_version, version_name, version_number, download_url, sha256sum))
+                    # Fallback to the first SHA in the section if filename association fails
+                    sha_match = re.search(r'\b[a-f0-9]{64}\b', sha_text)
+                    if sha_match:
+                        sha256sum = sha_match.group(0)
+
+                if not sha256sum:
+                    print(f"[WARNING] SHA not found for: {version_name}")
+
+                self.add_release(
+                    AndroidStudioRelease(
+                        stable,
+                        major_version,
+                        version_name,
+                        version_number,
+                        download_url,
+                        sha256sum
+                    )
+                )
+
         except requests.exceptions.HTTPError as e:
-            print('Error status {} fetching {}:\n{}'.format(e.response.status_code, e.response.url, e.response.content))
+            print(f"Error status {e.response.status_code} fetching {e.response.url}:\n{e.response.content}")
 
 
 class AndroidStudioRelease(object):
