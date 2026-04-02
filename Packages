@@ -6,10 +6,10 @@ Maintainer: Maarten Fonville <maarten.fonville@gmail.com>
 Installed-Size: 8
 Depends: android-studio-2025.2.3
 Filename: ./android-studio_2025.2.3.9~trixie+0_amd64.deb
-Size: 1404
-MD5sum: 8271537dfd2c8d2ba54b2e55340b9f95
-SHA1: 3591c63cce8417113b2913aba9c504563f2ca88c
-SHA256: e46def97d3c97bac4b8496423e8abacab68f8771affd46b6fa312ed9aa9a9bd9
+Size: 1412
+MD5sum: 0e158da1b0014a96410a914bbb7744eb
+SHA1: 5479a6dae5b08f65aa7f0a7b58fa1d83e63103a1
+SHA256: 484f3d01230c014b35d06fc3b6b4ab7dcf6593e0707896ae2a7859b115f98f15
 Section: devel
 Priority: optional
 Homepage: https://developer.android.com/tools/studio/index.html
@@ -25,10 +25,10 @@ Depends: unzip
 Suggests: libc6-i386, lib32z1
 Conflicts: android-studio-2020.3.1, android-studio-2021.1.1, android-studio-2021.2.1, android-studio-2021.3.1, android-studio-2022.1.1, android-studio-2022.2.1, android-studio-2022.3.1, android-studio-2023.1.1, android-studio-2023.2.1, android-studio-2023.3.1, android-studio-2023.3.2, android-studio-2024.1.1, android-studio-2024.1.2, android-studio-2024.1.3, android-studio-2024.2.1, android-studio-2024.2.2, android-studio-2024.3.1, android-studio-2024.3.2, android-studio-2025.1.1, android-studio-2025.1.2, android-studio-2025.1.3, android-studio-2025.1.4, android-studio-2025.2.1, android-studio-2025.2.2, android-studio-2025.3.1, android-studio-3.4, android-studio-3.5, android-studio-3.6, android-studio-4.0, android-studio-4.1, android-studio-4.2, android-studio-beta, android-studio-canary, android-studio-dev, android-studio-preview
 Filename: ./android-studio-2025.2.3_2025.2.3.9~trixie+0_amd64.deb
-Size: 5652
-MD5sum: bcb67946b03bea3a4e3cfa324bb64d29
-SHA1: 3d393b66161e76cc3c644347c7ef3153855d1fa6
-SHA256: e73375f02479786ee257a8bd8e8a639dc893f14a973ef9e85f45cf8a8dcb41c7
+Size: 5656
+MD5sum: 5f61bd34eb82c72aebc960e6739ba880
+SHA1: 21eecf30b1aaa277fa0dfc867188f7536a9dcfe0
+SHA256: ff139fb037a8103539467ac47ec3a838a9b9fe6dc93aede49dc16e160f813d75
 Section: devel
 Priority: optional
 Homepage: https://developer.android.com/tools/studio/index.html
