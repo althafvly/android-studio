@@ -20,4 +20,8 @@ android-studio*.changes
 android-studio*.upload
 android-studio*.buildinfo
 android-studio*.deb
+*.deb
 android-studio/debian/files
+
+# Repository hosting artifacts
+repo/

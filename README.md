@@ -9,7 +9,16 @@ Based upon the work of @PaoloRotolo
 
 ## How-to
 
-#### Install android-studio (Ubuntu)
+#### Install via GitHub Repository (Debian/Ubuntu)
+You can add this repository to your system to receive automatic updates:
+```bash
+echo "deb [trusted=yes] https://althafvly.github.io/android-studio/ ./" | sudo tee /etc/apt/sources.list.d/android-studio.list
+sudo apt update
+sudo apt install android-studio
+```
+Note: This repository is automatically updated every 7 days via GitHub Actions.
+
+#### Install via PPA (Ubuntu only)
 Download pre-built packages from our [PPA](https://launchpad.net/~maarten-fonville/+archive/ubuntu/android-studio)
 
 #### Build android-studio (Ubuntu/Debian)
