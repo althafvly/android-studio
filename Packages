@@ -7,9 +7,9 @@ Installed-Size: 8
 Depends: android-studio-2025.3
 Filename: ./android-studio_2025.3.4.7~trixie+0_amd64.deb
 Size: 1408
-MD5sum: 90ebe739aec7a0a8718ea4ce84ecc405
-SHA1: 49c348e1296c6ec9e218cf3d78e4b4539da332be
-SHA256: bb5fb7f71fe8262a4ea6a20cb2f4a6668b9f1cb44afaed253e5a7dc60b622a68
+MD5sum: 0fa7cd9cdf0098febd0bda34e5a0a3d6
+SHA1: 515e3bc9e8fccb056aff4fe82bcb44247c3cb9bd
+SHA256: 6a655f129df694bcb0710e9c94455c3f2a2d2b956872a150ac2bed139f65ce18
 Section: devel
 Priority: optional
 Homepage: https://developer.android.com/tools/studio/index.html
@@ -25,10 +25,10 @@ Depends: unzip
 Suggests: libc6-i386, lib32z1
 Conflicts: android-studio-2020.3, android-studio-2021.1, android-studio-2021.2, android-studio-2021.3, android-studio-2022.1, android-studio-2022.2, android-studio-2022.3, android-studio-2023.1, android-studio-2023.2, android-studio-2023.3, android-studio-2024.1, android-studio-2024.2, android-studio-2024.3, android-studio-2025.1, android-studio-2025.2, android-studio-2026.1, android-studio-beta, android-studio-canary, android-studio-dev, android-studio-preview
 Filename: ./android-studio-2025.3_2025.3.4.7~trixie+0_amd64.deb
-Size: 5640
-MD5sum: beb7562fcddb621954784beb1991dd85
-SHA1: bfa643004bbf696892f0ac655dd1837cd3ae521e
-SHA256: dc5fef6d0a8d23edc0e42c34f1e5ca05fff67a487c0f1928d46b3a86ef664a02
+Size: 5636
+MD5sum: 694d4ed1478cd3c9ba716600dda1be42
+SHA1: c533458f7425db5c66c565e51970a6df6db38155
+SHA256: b5a556b1f5f62427bfbe25a5ea9e5cadf7fc995ac0783b36786df15f0c3f9bf5
 Section: devel
 Priority: optional
 Homepage: https://developer.android.com/tools/studio/index.html
