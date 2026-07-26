@@ -1,22 +1,22 @@
 Package: android-studio
 Source: android-studio-2026.1
-Version: 2026.1.2.10~trixie+0
+Version: 2026.1.2.11~trixie+0
 Architecture: amd64
 Maintainer: Maarten Fonville <maarten.fonville@gmail.com>
 Installed-Size: 8
 Depends: android-studio-2026.1
-Filename: ./android-studio_2026.1.2.10~trixie+0_amd64.deb
-Size: 1408
-MD5sum: 3203cc55f8ade640266a22713c99f8f6
-SHA1: 92c67b52be6ba8a1dc7fc4d5a0630f34e467f86c
-SHA256: f475d74346d95c05b9d1a69e027498b3553ce834db34f0ebe9bb587d4733d8aa
+Filename: ./android-studio_2026.1.2.11~trixie+0_amd64.deb
+Size: 1416
+MD5sum: 2aedc7d1b876a55b2d2d7caeb514c211
+SHA1: e1552043973cfc627495d870c8de330c5e45c860
+SHA256: ea7faf7b92034c7b8697d2c64e35b34c86322f2b8821b31941277ef441d71aee
 Section: devel
 Priority: optional
 Homepage: https://developer.android.com/tools/studio/index.html
 Description: Depends on the latest stable Android Studio
 
 Package: android-studio-2026.1
-Version: 2026.1.2.10~trixie+0
+Version: 2026.1.2.11~trixie+0
 Architecture: amd64
 Maintainer: Maarten Fonville <maarten.fonville@gmail.com>
 Installed-Size: 28
@@ -24,11 +24,11 @@ Pre-Depends: wget, coreutils
 Depends: unzip
 Suggests: libc6-i386, lib32z1
 Conflicts: android-studio-2020.3, android-studio-2021.1, android-studio-2021.2, android-studio-2021.3, android-studio-2022.1, android-studio-2022.2, android-studio-2022.3, android-studio-2023.1, android-studio-2023.2, android-studio-2023.3, android-studio-2024.1, android-studio-2024.2, android-studio-2024.3, android-studio-2025.1, android-studio-2025.2, android-studio-2025.3, android-studio-beta, android-studio-canary, android-studio-dev, android-studio-preview
-Filename: ./android-studio-2026.1_2026.1.2.10~trixie+0_amd64.deb
-Size: 5636
-MD5sum: e958fdc02e2d47bf995883294f133759
-SHA1: ecde1d3d00079e4a45023d9ac2d8c8555b2e446c
-SHA256: 732d603c3bc4aa96a3827e0f42232c21e425a1eb6c22cbb3ba7ae3fe9547e7cc
+Filename: ./android-studio-2026.1_2026.1.2.11~trixie+0_amd64.deb
+Size: 5648
+MD5sum: ab008f7688a28d72ff2e7a8b1bef8e1e
+SHA1: 512570c409dcdff76d961e58576e0336c0f2c523
+SHA256: 64c56f8b30b6abf8d92debf8ecacad51aaa87be11b02b48706bbb239f8ccf4ec
 Section: devel
 Priority: optional
 Homepage: https://developer.android.com/tools/studio/index.html
